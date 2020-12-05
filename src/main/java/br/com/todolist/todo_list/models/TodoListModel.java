@@ -1,4 +1,4 @@
-package br.com.todolist.todo_list;
+package br.com.todolist.todo_list.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
