@@ -21,7 +21,7 @@ public class TodoListModel {
     @Column(name = "description", nullable = false)
     private String description;
 
-    @Column(name = "Status", nullable = false)
+    @Column(name = "status", nullable = false)
     private String status;
 
     @Column(name = "tag", nullable = false)
