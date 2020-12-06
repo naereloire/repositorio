@@ -12,7 +12,6 @@ import javax.persistence.Table;
 public class TodoListModel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "title", nullable = false)
@@ -56,7 +55,7 @@ public class TodoListModel {
     }
 
     public void setStatus(String status) {
-        status = status;
+        this.status = status;
     }
 
     public String getTag() {

@@ -32,7 +32,7 @@ public class TodoListController {
         return todoListView.save(todoList);
     }
 
-    @RequestMapping(value = "/{todoList}", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     @ResponseBody
     public List<TodoListModel> getAllTodoList() {
         List<TodoListModel> listOffTodos = todoListView.findAll();

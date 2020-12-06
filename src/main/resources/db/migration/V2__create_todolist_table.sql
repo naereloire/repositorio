@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS migrations.todolist (
+CREATE TABLE IF NOT EXISTS migrations.to_do (
     id INT2,
     title TEXT NOT NULL,
     description TEXT NOT NULL,
