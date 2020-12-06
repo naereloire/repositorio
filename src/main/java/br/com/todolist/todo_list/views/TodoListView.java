@@ -7,7 +7,7 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface TodoListViews extends JpaRepository<TodoListModel, Long> {
+public interface TodoListView extends JpaRepository<TodoListModel, Long> {
     List<TodoListModel> findByStatus(String status);
 
     @Query("select tag from to_do where title = :title")
