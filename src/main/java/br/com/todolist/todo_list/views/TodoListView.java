@@ -8,8 +8,9 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface TodoListView extends JpaRepository<TodoListModel, Long> {
-    List<TodoListModel> findByStatus(String status);
 
-    @Query("select tag from to_do where title = :title")
-    List<TodoListModel> findTagByTitle(@Param("title") String title);
+    List<TodoListModel> findByStatus(String status);
+//
+//    @Query(nativeQuery=true , value = "select tag from to_do where title = :title")
+//    List<TodoListModel> findTagByTitle(@Param("title") String title);
 }

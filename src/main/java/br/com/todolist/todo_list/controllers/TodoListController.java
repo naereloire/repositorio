@@ -47,16 +47,16 @@ public class TodoListController {
     }
 
     @RequestMapping(value = "/{status}", method = RequestMethod.GET)
-    public List<TodoListModel> getTodoListByStatus(@PathVariable String status) {
+    public List<TodoListModel> getTodoListByStatus(@PathVariable("status") String status) {
         return todoListView.findByStatus(status);
     }
 
-    @RequestMapping(value = "/{tag}", method = RequestMethod.GET)
-    @ResponseBody
-    public List<TodoListModel> getTodoListByTag(@PathVariable("tag") String tag, Model model) {
-        List<TodoListModel> listOffTodosByTag = todoListView.findTagByTitle(tag);
-        return listOffTodosByTag;
-    }
+//    @RequestMapping(value = "/{tag}", method = RequestMethod.GET)
+//    @ResponseBody
+//    public List<TodoListModel> getTodoListByTag(@PathVariable("tag") String tag, Model model) {
+//        List<TodoListModel> listOffTodosByTag = todoListView.findTagByTitle(tag);
+//        return listOffTodosByTag;
+//    }
 
     @PutMapping(value = "/{id}")
     public ResponseEntity update(@PathVariable("id") Long id, @RequestBody TodoListModel todoListModel) {

@@ -12,7 +12,7 @@ import javax.persistence.Table;
 public class TodoListModel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "title", nullable = false)
@@ -22,7 +22,7 @@ public class TodoListModel {
     private String description;
 
     @Column(name = "Status", nullable = false)
-    private String Status;
+    private String status;
 
     @Column(name = "tag", nullable = false)
     private String tag;
@@ -52,11 +52,11 @@ public class TodoListModel {
     }
 
     public String getStatus() {
-        return Status;
+        return status;
     }
 
     public void setStatus(String status) {
-        Status = status;
+        status = status;
     }
 
     public String getTag() {
