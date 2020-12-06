@@ -39,26 +39,26 @@ public class TodoListController {
         return listOffTodos;
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity getTodoListById(@PathVariable Long id) {
+    @RequestMapping(value = "/id/{id}", method = RequestMethod.GET)
+    public ResponseEntity getTodoListById(@PathVariable("id") Long id) {
         return todoListView.findById(id)
                 .map(record -> ResponseEntity.ok().body(record))
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @RequestMapping(value = "/{status}", method = RequestMethod.GET)
+    @RequestMapping(value = "/status/{status}", method = RequestMethod.GET)
     public List<TodoListModel> getTodoListByStatus(@PathVariable("status") String status) {
         return todoListView.findByStatus(status);
     }
 
-//    @RequestMapping(value = "/{tag}", method = RequestMethod.GET)
-//    @ResponseBody
-//    public List<TodoListModel> getTodoListByTag(@PathVariable("tag") String tag, Model model) {
-//        List<TodoListModel> listOffTodosByTag = todoListView.findTagByTitle(tag);
-//        return listOffTodosByTag;
-//    }
+    @RequestMapping(value = "/{tag}", method = RequestMethod.GET)
+    @ResponseBody
+    public List<TodoListModel> getTodoListByTag(@PathVariable("tag") String tag, Model model) {
+        List<TodoListModel> listOffTodosByTag = todoListView.findTagByTitle(tag);
+        return listOffTodosByTag;
+    }
 
-    @PutMapping(value = "/{id}")
+    @PutMapping(value = "/id/{id}")
     public ResponseEntity update(@PathVariable("id") Long id, @RequestBody TodoListModel todoListModel) {
         return todoListView.findById(id)
                 .map(record -> {
@@ -71,7 +71,7 @@ public class TodoListController {
                 }).orElse(ResponseEntity.notFound().build());
     }
 
-    @DeleteMapping(path = {"/{id}"})
+    @DeleteMapping(path = {"/id/{id}"})
     public ResponseEntity <?> delete (@PathVariable Long id){
         return todoListView.findById(id)
                 .map(record->{
