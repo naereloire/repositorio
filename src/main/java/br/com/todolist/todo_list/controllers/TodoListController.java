@@ -51,7 +51,7 @@ public class TodoListController {
         return todoListView.findByStatus(status);
     }
 
-    @RequestMapping(value = "/{tag}", method = RequestMethod.GET)
+    @RequestMapping(value = "/tag/{tag}", method = RequestMethod.GET)
     @ResponseBody
     public List<TodoListModel> getTodoListByTag(@PathVariable("tag") String tag, Model model) {
         List<TodoListModel> listOffTodosByTag = todoListView.findTagByTitle(tag);
