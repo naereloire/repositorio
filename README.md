@@ -1,24 +1,13 @@
-# to_do_list_API
+<h1 align="center">To DO List API</h1>
+![](https://img.shields.io/github/languages/top/https://github.com/naereloire/to_do_list_API?color=green&label=javascript%20&style=for-the-badge)
+![](https://img.shields.io/github/languages/top/naereloire/SAP004-burger-queen-api?color=green&label=node.js&style=for-the-badge)
+API rest com arquitetura MVC e métodos CRUD, servindo como backend para criação de listas de tarefas com as seguintes colunas:
+* Titulo.
+* Descrição.
+* Tag.
+* Status.
 
-Objetivo principal: 
-Aprender os conceitos basicos de backend e serviços REST.
+Definições Tecnicas:
 
-Escopo:
-Criar uma API rest de TODO LIST.
 
-Ferramentas:
-
-Realizar chamas da API com postman
-Utilizar spring boot e rest apis para exposição dos endpoints (APIs rest com spring boot)  (anotação @controller)
-Utilizar um banco de dados em memóriacom H2.
-
-Arquitetura dessa API: 
-Controller, Services e Repository (Spring mvc).
-
-Negocio:
-Esse serviço deve permitir a CRIAÇÃO, EXCLUIR e EDITAR uma lista de TODOs
-
-Exemplo de payload para cada todo:
-ID
-CONTEUDO
 
