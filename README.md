@@ -10,7 +10,7 @@
 ## 1. Resumo do projeto.   
 [API](https://medium.com/@rullyalves/o-que-s%C3%A3o-apis-e-requisi%C3%A7%C3%B5es-http-919238f48206)  **_rest_** com
  modelo de arquitetura [MVC](https://www.profissionaisti.com.br/o-conceito-e-as-duvidas-sobre-o-mvc/) (Model View
-  Controller) e métodos [CRUD](https://www.codecademy.com/articles/what-is-crud), servindo como backend para criação
+  Controller) e métodos [CRUD](https://www.codecademy.com/articles/what-is-crud), servindo como back-end para criação
    de listas de tarefas com os seguintes campos:
 
 * Titulo.
