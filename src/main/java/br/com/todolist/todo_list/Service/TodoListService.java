@@ -2,7 +2,9 @@ package br.com.todolist.todo_list.Service;
 
 import br.com.todolist.todo_list.models.TodoListModel;
 import br.com.todolist.todo_list.repositories.TodoListRepository;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -23,6 +25,13 @@ public class TodoListService {
     public List<TodoListModel> findAllTodo() {
         return todoListRepository.findAll();
 
+    }
+
+    public ResponseEntity findTodoById(Long id) {
+        return todoListRepository
+                .findById(id)
+                .map(record -> ResponseEntity.ok().body(record))
+                .orElse(ResponseEntity.notFound().build());
     }
 
 }

@@ -42,9 +42,7 @@ public class TodoListController {
 
     @RequestMapping(value = "/id/{id}", method = RequestMethod.GET)
     public ResponseEntity getTodoListById(@PathVariable("id") Long id) {
-        return todoListRepository.findById(id)
-                .map(record -> ResponseEntity.ok().body(record))
-                .orElse(ResponseEntity.notFound().build());
+        return todoListService.findTodoById(id);
     }
 
 //    @RequestMapping(value = "/status/{status}", method = RequestMethod.GET)
@@ -59,26 +57,26 @@ public class TodoListController {
 //        return listOffTodosByTag;
 //    }
 //
-    @PutMapping(value = "/id/{id}")
-    public ResponseEntity update(@PathVariable("id") Long id, @RequestBody TodoListModel todoListModel) {
-        return todoListRepository.findById(id)
-                .map(record -> {
-                    record.setTitle(todoListModel.getTitle());
-                    record.setDescription(todoListModel.getDescription());
-                    record.setStatus(todoListModel.getStatus());
-                    record.setTag(todoListModel.getTag());
-                    TodoListModel updated = todoListRepository.save(record);
-                    return ResponseEntity.ok().body(updated);
-                }).orElse(ResponseEntity.notFound().build());
-    }
-
-    @DeleteMapping(path = {"/id/{id}"})
-    public ResponseEntity <?> delete (@PathVariable Long id){
-        return todoListRepository.findById(id)
-                .map(record->{
-                    todoListRepository.deleteById(id);
-                    return ResponseEntity.ok().build();
-                }).orElse(ResponseEntity.notFound().build());
-    }
+//    @PutMapping(value = "/id/{id}")
+//    public ResponseEntity update(@PathVariable("id") Long id, @RequestBody TodoListModel todoListModel) {
+//        return todoListRepository.findById(id)
+//                .map(record -> {
+//                    record.setTitle(todoListModel.getTitle());
+//                    record.setDescription(todoListModel.getDescription());
+//                    record.setStatus(todoListModel.getStatus());
+//                    record.setTag(todoListModel.getTag());
+//                    TodoListModel updated = todoListRepository.save(record);
+//                    return ResponseEntity.ok().body(updated);
+//                }).orElse(ResponseEntity.notFound().build());
+//    }
+//
+//    @DeleteMapping(path = {"/id/{id}"})
+//    public ResponseEntity <?> delete (@PathVariable Long id){
+//        return todoListRepository.findById(id)
+//                .map(record->{
+//                    todoListRepository.deleteById(id);
+//                    return ResponseEntity.ok().build();
+//                }).orElse(ResponseEntity.notFound().build());
+//    }
 
 }
