@@ -1,4 +1,4 @@
-package br.com.todolist.todo_list.views;
+package br.com.todolist.todo_list.repositories;
 
 import br.com.todolist.todo_list.models.TodoListModel;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -7,7 +7,7 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface TodoListView extends JpaRepository<TodoListModel, Long> {
+public interface TodoListRepository extends JpaRepository<TodoListModel, Long> {
 
     List<TodoListModel> findByStatus(String status);
 
