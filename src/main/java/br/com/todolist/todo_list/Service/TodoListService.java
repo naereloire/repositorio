@@ -4,7 +4,7 @@ import br.com.todolist.todo_list.models.TodoListModel;
 import br.com.todolist.todo_list.repositories.TodoListRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
+
 
 import java.util.List;
 
@@ -34,6 +34,25 @@ public class TodoListService {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-}
+    public ResponseEntity updateTodo(Long id, TodoListModel todoListModel) {
+        return todoListRepository.findById(id)
+                .map(record -> {
+                    record.setTitle(todoListModel.getTitle());
+                    record.setDescription(todoListModel.getDescription());
+                    record.setStatus(todoListModel.getStatus());
+                    record.setTag(todoListModel.getTag());
+                    TodoListModel updated = todoListRepository.save(record);
+                    return ResponseEntity.ok().body(updated);
+                }).orElse(ResponseEntity.notFound().build());
 
-//tipo/retorno/nome/parametros
+    }
+
+    public ResponseEntity deleteTodo(Long id) {
+        return todoListRepository.findById(id)
+                .map(record -> {
+                    todoListRepository.deleteById(id);
+                    return ResponseEntity.ok().build();
+                }).orElse(ResponseEntity.notFound().build());
+    }
+
+}
