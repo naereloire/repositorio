@@ -2,10 +2,8 @@ package br.com.todolist.todo_list.controllers;
 
 import br.com.todolist.todo_list.Service.TodoListService;
 import br.com.todolist.todo_list.models.TodoListModel;
-import br.com.todolist.todo_list.repositories.TodoListRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;

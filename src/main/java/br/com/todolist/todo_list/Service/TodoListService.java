@@ -5,7 +5,6 @@ import br.com.todolist.todo_list.repositories.TodoListRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-
 import java.util.List;
 
 @Service
@@ -17,9 +16,7 @@ public class TodoListService {
     }
 
     public TodoListModel saveTodo(TodoListModel listOrder) {
-
-        todoListRepository.save(listOrder);
-        return listOrder;
+        return todoListRepository.save(listOrder);
     }
 
     public List<TodoListModel> findAllTodo() {
@@ -44,7 +41,6 @@ public class TodoListService {
                     TodoListModel updated = todoListRepository.save(record);
                     return ResponseEntity.ok().body(updated);
                 }).orElse(ResponseEntity.notFound().build());
-
     }
 
     public ResponseEntity deleteTodo(Long id) {
@@ -54,5 +50,4 @@ public class TodoListService {
                     return ResponseEntity.ok().build();
                 }).orElse(ResponseEntity.notFound().build());
     }
-
 }
