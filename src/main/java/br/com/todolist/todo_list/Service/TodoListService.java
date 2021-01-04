@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TodoListService {
@@ -24,30 +25,41 @@ public class TodoListService {
 
     }
 
-    public ResponseEntity findTodoById(Long id) {
-        return todoListRepository
-                .findById(id)
-                .map(record -> ResponseEntity.ok().body(record))
-                .orElse(ResponseEntity.notFound().build());
+    public Optional<TodoListModel> findTodoById(Long id) {
+        return todoListRepository.findById(id);
     }
 
-    public ResponseEntity updateTodo(Long id, TodoListModel todoListModel) {
-        return todoListRepository.findById(id)
-                .map(record -> {
-                    record.setTitle(todoListModel.getTitle());
-                    record.setDescription(todoListModel.getDescription());
-                    record.setStatus(todoListModel.getStatus());
-                    record.setTag(todoListModel.getTag());
-                    TodoListModel updated = todoListRepository.save(record);
-                    return ResponseEntity.ok().body(updated);
-                }).orElse(ResponseEntity.notFound().build());
+    public TodoListModel updateTodo(Long id, TodoListModel todoListModel) {
+
+        Optional<TodoListModel> todoFounded = todoListRepository.findById(id);
+        if (todoFounded.isPresent()) {
+            TodoListModel record = todoFounded.get();
+            record.setTitle(todoListModel.getTitle());
+            record.setDescription(todoListModel.getDescription());
+            record.setStatus(todoListModel.getStatus());
+            record.setTag(todoListModel.getTag());
+            TodoListModel updated = todoListRepository.save(record);
+            return updated;
+        } else {
+            return null;
+        }
     }
 
-    public ResponseEntity deleteTodo(Long id) {
-        return todoListRepository.findById(id)
-                .map(record -> {
-                    todoListRepository.deleteById(id);
-                    return ResponseEntity.ok().build();
-                }).orElse(ResponseEntity.notFound().build());
+//    public ResponseEntity deleteTodo(Long id) {
+//        return todoListRepository.findById(id)
+//                .map(record -> {
+//                    todoListRepository.deleteById(id);
+//                    return ResponseEntity.ok().build();
+//                }).orElse(ResponseEntity.notFound().build());
+//    }
+
+    public boolean deleteTodo(Long id) {
+        Optional<TodoListModel> todoFounded = todoListRepository.findById(id);
+        if (todoFounded.isPresent()) {
+             todoListRepository.deleteById(id);
+             return true;
+        } else {
+            return false;
+        }
     }
 }

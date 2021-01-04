@@ -40,17 +40,30 @@ public class TodoListController {
 
     @RequestMapping(value = "/id/{id}", method = RequestMethod.GET)
     public ResponseEntity getById(@PathVariable("id") Long id) {
-        return todoListService.findTodoById(id);
+
+        return todoListService.findTodoById(id)
+                .map(record -> ResponseEntity.ok().body(record))
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @PutMapping(value = "/id/{id}")
     public ResponseEntity update(@PathVariable("id") Long id, @RequestBody TodoListModel todoListModel) {
-        return todoListService.updateTodo(id,todoListModel);
+        TodoListModel updated = todoListService.updateTodo(id, todoListModel);
+        if (updated != null) {
+            return ResponseEntity.ok().body(updated);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @DeleteMapping(path = {"/id/{id}"})
-    public ResponseEntity <?> delete (@PathVariable Long id){
-        return todoListService.deleteTodo(id);
+    public ResponseEntity delete(@PathVariable Long id) {
+        boolean deleted = todoListService.deleteTodo(id);
+        if (deleted) {
+            return ResponseEntity.ok().body("deletado");
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
 }
